@@ -79,25 +79,28 @@
   style="background-image: url('https://i.postimg.cc/SRwzTj5R/solar.jpg');">
   
   <!-- Gradient overlay -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/90"></div>
 
   <!-- Content -->
-  <div class="relative z-10 text-center px-4 max-w-2xl animate-fadeInUp">
-    <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-tight">
-      Smart Power Safe Homes
+  <div class="relative z-10 text-center px-4 max-w-2xl space-y-6">
+    <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg animate-fadeInUp">
+      Smart Power, Safe Homes
     </h1>
-    <p class="text-base sm:text-lg md:text-xl mb-6">
-      Experts in Solar and Electrical Installations, Trusted Services Across The Globe
+    <p class="text-base sm:text-lg md:text-xl text-gray-200 animate-fadeInUp" style="animation-delay:0.3s;">
+      Experts in Solar & Electrical Installations — Trusted Services Across the Globe
     </p>
     <a href="#contact" 
-       class="bg-blue-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/50 transition inline-block">
+       class="inline-block bg-blue-600 px-6 py-3 rounded-full text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 animate-fadeInUp" 
+       style="animation-delay:0.6s;">
       GET A QUOTE NOW
     </a>
   </div>
 
   <!-- Scroll Down Indicator -->
   <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
-    <span class="animate-bounce text-white text-3xl">⌄</span>
+    <svg class="w-6 h-6 text-white animate-bounce opacity-80" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
   </div>
 </section>
 
@@ -110,7 +113,11 @@
 .animate-fadeInUp {
   animation: fadeInUp 1s ease-out forwards;
 }
+.animate-fadeInUp[style*="animation-delay"] {
+  opacity: 0; /* ensures elements stay hidden until their animation starts */
+}
 </style>
+
 
 
 
