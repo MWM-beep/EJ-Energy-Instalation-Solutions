@@ -419,7 +419,7 @@
 
 <!-- Google Map -->
 <div class="mt-10 max-w-3xl mx-auto">
-  <div id="map-container" class="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg shadow-lg transition-all duration-300">
+  <div class="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-lg shadow-lg">
     <iframe 
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9572934760026!2d36.821946!3d-1.292066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d15dd99225%3A0x6b5d9a3ecf06ef9a!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1651599154560!5m2!1sen!2ske" 
       class="absolute top-0 left-0 w-full h-full"
@@ -427,37 +427,9 @@
       allowfullscreen="" 
       loading="lazy">
     </iframe>
-
-    <!-- Floating Button -->
-    <button 
-      onclick="toggleMap()" 
-      id="map-btn"
-      class="absolute bottom-3 right-3 px-4 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition">
-      Expand Map
-    </button>
   </div>
 </div>
 
-<script>
-  function toggleMap() {
-    const mapContainer = document.getElementById("map-container");
-    const button = document.getElementById("map-btn");
-
-    if (mapContainer.classList.contains("fixed")) {
-      // Exit fullscreen
-      mapContainer.classList.remove("fixed", "inset-0", "z-50", "pb-0");
-      mapContainer.classList.add("relative", "pb-[56.25%]");
-      button.textContent = "Expand Map";
-      document.body.style.overflow = "auto"; // Enable scrolling again
-    } else {
-      // Enter fullscreen
-      mapContainer.classList.remove("relative", "pb-[56.25%]");
-      mapContainer.classList.add("fixed", "inset-0", "z-50", "pb-0");
-      button.textContent = "Close Map";
-      document.body.style.overflow = "hidden"; // Prevent background scroll
-    }
-  }
-</script>
 
 
 
