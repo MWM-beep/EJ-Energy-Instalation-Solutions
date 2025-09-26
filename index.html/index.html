@@ -370,21 +370,60 @@
 
   
 <!-- Contact -->
-  <section id="contact" class="py-16 bg-gray-100 text-center px-4">
-    <h2 class="text-3xl font-bold text-brand mb-6">Contact Us</h2>
-     <p class="mb-4">We would love to hear from you! Reach us via WhatsApp, phone, or email.</p>
-    <p class="mb-2 text-lg">📞 Phone: 0105 837 658 / 0714 034 289</p>
-    <p class="mb-2 text-lg">📧 Email: <a href="mailto:ej.solution26@gmail.com" class="text-brand hover:underline">ej.solution26@gmail.com</a></p>
-    <p class="mb-2 text-lg">📍 Location: Nairobi, Kenya</p>
-    <p class="mb-4 text-lg">📱 Social: <a href="#" class="text-blue-600 hover:underline">Instagram</a> | <a href="#" class="text-pink-600 hover:underline">Facebook</a></p>
-    <div class="flex justify-center gap-4 mt-4">
-      <a href="https://wa.me/+254105837658" class="inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">WhatsApp</a>
-      <a href="tel:+254105837658" class="inline-block bg-brand text-white px-6 py-2 rounded hover:bg-brand-dark transition">Call Now</a>
-    </div>
-    <div class="mt-8 max-w-3xl mx-auto">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9572934760026!2d36.821946!3d-1.292066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d15dd99225%3A0x6b5d9a3ecf06ef9a!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1651599154560!5m2!1sen!2ske" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </section>
+<section id="contact" class="py-16 bg-gray-100 text-center px-4">
+  <h2 class="text-3xl font-bold text-brand mb-6">Contact Us</h2>
+  <p class="mb-4">We would love to hear from you! Reach us via WhatsApp, phone, email, or by filling out the form below.</p>
+
+  <!-- Phone, Email, Location -->
+  <p class="mb-2 text-lg">📞 Phone: 
+    <a href="tel:+254105837658" class="hover:underline">0105 837 658</a> / 
+    <a href="tel:+254714034289" class="hover:underline">0714 034 289</a>
+  </p>
+  <p class="mb-2 text-lg">📧 Email: 
+    <a href="mailto:ej.solution26@gmail.com" class="text-brand hover:underline">ej.solution26@gmail.com</a>
+  </p>
+  <p class="mb-2 text-lg">📍 Location: Nairobi, Kenya</p>
+  <p class="mb-4 text-lg">📱 Social: 
+    <a href="#" class="text-blue-600 hover:underline">Instagram</a> | 
+    <a href="#" class="text-pink-600 hover:underline">Facebook</a>
+  </p>
+
+  <!-- WhatsApp & Call Buttons -->
+  <div class="flex justify-center gap-4 mt-4">
+    <a href="https://wa.me/+254105837658" class="inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">WhatsApp</a>
+    <a href="tel:+254105837658" class="inline-block bg-brand text-white px-6 py-2 rounded hover:bg-brand-dark transition">Call Now</a>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="mt-10 max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8 text-left">
+    <h3 class="text-2xl font-semibold text-center mb-6">Send Us a Message</h3>
+    <form action="mailto:ej.solution26@gmail.com" method="POST" enctype="text/plain">
+      <div class="mb-4">
+        <label for="name" class="block mb-2 font-medium">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required
+               class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-brand">
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block mb-2 font-medium">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required
+               class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-brand">
+      </div>
+      <div class="mb-4">
+        <label for="message" class="block mb-2 font-medium">Your Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Write your message here..." required
+                  class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-brand"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-brand text-white py-3 rounded hover:bg-brand-dark transition">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Google Map -->
+  <div class="mt-10 max-w-3xl mx-auto">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9572934760026!2d36.821946!3d-1.292066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d15dd99225%3A0x6b5d9a3ecf06ef9a!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2ske!4v1651599154560!5m2!1sen!2ske" 
+            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
 
   <!-- Footer -->
   <footer class="bg-brand-dark text-white text-center py-6">
