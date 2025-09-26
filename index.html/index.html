@@ -221,38 +221,75 @@
 <section id="gallery" class="py-16 bg-white container mx-auto px-4">
   <h2 class="text-3xl font-bold text-center text-brand mb-10">Gallery</h2>
 
+  <!-- Solar Section -->
   <div id="solar" class="mb-12">
     <h3 class="text-2xl font-semibold text-brand mb-4">Solar Installations</h3>
     <div class="grid md:grid-cols-4 gap-4">
-      <img src="https://i.postimg.cc/ZYdHpbZM/EJ-Energy.jpg" class="w-full h-52 object-cover rounded" alt="Solar 1">
-      <img src="https://i.postimg.cc/SstPsD6Y/EJ-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded" alt="Solar 2">
-      <img src="https://i.postimg.cc/B6hfQvsM/Whats-App-Image-2025-06-17-at-13-01-31-3.jpg" class="w-full h-52 object-cover rounded" alt="Solar 3">
-      <img src="https://i.postimg.cc/44P6zmqw/Ej-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded" alt="Solar 4">
-       <img src="https://i.postimg.cc/1txmjTrm/heat-pump.jpg" class="w-full h-52 object-cover rounded" alt="Solar 5">
+      <img src="https://i.postimg.cc/ZYdHpbZM/EJ-Energy.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 1">
+      <img src="https://i.postimg.cc/SstPsD6Y/EJ-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 2">
+      <img src="https://i.postimg.cc/B6hfQvsM/Whats-App-Image-2025-06-17-at-13-01-31-3.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 3">
+      <img src="https://i.postimg.cc/44P6zmqw/Ej-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 4">
+      <img src="https://i.postimg.cc/1txmjTrm/heat-pump.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 5">
     </div>
   </div>
-  
 
-  <div id="electrical">
-  <h3 class="text-2xl font-semibold text-brand mb-4">Electrical Installations</h3>
-  <div class="grid md:grid-cols-4 gap-4 mb-4">
-    <img src="https://via.placeholder.com/300x200?text=Electrical+1" class="w-full h-52 object-cover rounded" alt="Electrical 1">
-    <img src="https://via.placeholder.com/300x200?text=Electrical+2" class="w-full h-52 object-cover rounded" alt="Electrical 2">
-    <img src="https://via.placeholder.com/300x200?text=Electrical+3" class="w-full h-52 object-cover rounded" alt="Electrical 3">
-    <img src="https://via.placeholder.com/300x200?text=Electrical+4" class="w-full h-52 object-cover rounded" alt="Electrical 4">
+  <!-- Electrical Section -->
+  <div id="electrical" class="mb-12">
+    <h3 class="text-2xl font-semibold text-brand mb-4">Electrical Installations</h3>
+    <div class="grid md:grid-cols-4 gap-4">
+      <img src="https://via.placeholder.com/300x200?text=Electrical+1" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Electrical 1">
+      <img src="https://via.placeholder.com/300x200?text=Electrical+2" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Electrical 2">
+      <img src="https://via.placeholder.com/300x200?text=Electrical+3" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Electrical 3">
+      <img src="https://via.placeholder.com/300x200?text=Electrical+4" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Electrical 4">
+    </div>
   </div>
-  
-</div>
-  </div>
-<div id="cctv" class="mb-12">
+
+  <!-- CCTV Section -->
+  <div id="cctv" class="mb-12">
     <h3 class="text-2xl font-semibold text-brand mb-4">CCTV & Camera Installations</h3>
     <div class="grid md:grid-cols-4 gap-4">
-      <img src="https://via.placeholder.com/300x200?text=CCTV+1" class="w-full h-52 object-cover rounded" alt="CCTV 1">
-      <img src="https://via.placeholder.com/300x200?text=CCTV+2" class="w-full h-52 object-cover rounded" alt="CCTV 2">
-      <img src="https://via.placeholder.com/300x200?text=CCTV+3" class="w-full h-52 object-cover rounded" alt="CCTV 3">
-      <img src="https://via.placeholder.com/300x200?text=CCTV+4" class="w-full h-52 object-cover rounded" alt="CCTV 4">
+      <img src="https://via.placeholder.com/300x200?text=CCTV+1" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="CCTV 1">
+      <img src="https://via.placeholder.com/300x200?text=CCTV+2" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="CCTV 2">
+      <img src="https://via.placeholder.com/300x200?text=CCTV+3" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="CCTV 3">
+      <img src="https://via.placeholder.com/300x200?text=CCTV+4" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="CCTV 4">
     </div>
   </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+  <span id="closeLightbox" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
+  <img id="lightboxImg" src="" class="max-w-4xl max-h-[90vh] rounded shadow-lg">
+</div>
+
+<script>
+  // Get elements
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("closeLightbox");
+  const images = document.querySelectorAll(".lightbox-img");
+
+  // Open lightbox
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.classList.remove("hidden");
+      lightboxImg.src = img.src;
+    });
+  });
+
+  // Close lightbox
+  closeBtn.addEventListener("click", () => {
+    lightbox.classList.add("hidden");
+  });
+
+  // Close when clicking outside image
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add("hidden");
+    }
+  });
+</script>
+
   
 </section>
 <!-- Sales Section -->
