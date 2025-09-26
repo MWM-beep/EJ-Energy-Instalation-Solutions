@@ -290,56 +290,84 @@
   });
 </script>
 
- </section>
+</section>
 <!-- Sales Section -->
 <section id="sales" class="py-16 bg-white text-center px-4">
   <h2 class="text-3xl font-bold text-brand mb-10">Products for Sale</h2>
   <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
     
     <!-- Product 1 -->
-    <div class="bg-gray-100 p-4 rounded shadow text-left">
+    <div class="bg-gray-100 p-4 rounded shadow text-left product">
       <img src="https://i.postimg.cc/pXtyJH8L/byd-solar-battery.jpg" alt="BYD Battery" class="w-full h-40 object-cover rounded mb-3">
-      <h3 class="text-xl font-semibold text-brand">BYD Battery</h3>
+      <h3 class="text-xl font-semibold text-brand product-name">BYD Battery</h3>
       <p class="text-gray-700 mb-2">BYD LV5.0 battery box 5kwh</p>
       <p class="font-bold text-gray-900 line-through">KES 135,000</p>
-      <p class="font-bold text-green-600 mb-3">KES 122,500</p>
-      <a href="https://wa.me/254105837658?text=I'm%20interested%20in%20the%20BYD%20Battery%20(KES%20122,500)" 
+      <p class="font-bold text-green-600 mb-3 product-price">KES 122,500</p>
+      <a href="#" 
          target="_blank" 
-         class="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
+         class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
         Buy Now
       </a>
     </div>
 
     <!-- Product 2 (Placeholder) -->
-    <div class="bg-gray-100 p-4 rounded shadow text-left">
+    <div class="bg-gray-100 p-4 rounded shadow text-left product">
       <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Product 2" class="w-full h-40 object-cover rounded mb-3">
-      <h3 class="text-xl font-semibold text-brand">Product Name</h3>
-      <p class="text-gray-700 mb-2">Product description...</p>
+      <h3 class="text-xl font-semibold text-brand product-name">......</h3>
+      <p class="text-gray-700 mb-2">......</p>
       <p class="font-bold text-gray-900 line-through">KES </p>
-      <p class="font-bold text-green-600 mb-3">KES </p>
-      <a href="https://wa.me/254105837658?text=I'm%20interested%20in%20this%20product" 
+      <p class="font-bold text-green-600 mb-3 product-price">KES </p>
+      <a href="#" 
          target="_blank" 
-         class="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
-        Buy Now
+         class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
+        Coming Soon
       </a>
     </div>
 
     <!-- Product 3 (Placeholder) -->
-    <div class="bg-gray-100 p-4 rounded shadow text-left">
+    <div class="bg-gray-100 p-4 rounded shadow text-left product">
       <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Product 3" class="w-full h-40 object-cover rounded mb-3">
-      <h3 class="text-xl font-semibold text-brand">Product Name</h3>
-      <p class="text-gray-700 mb-2">Product description...</p>
+      <h3 class="text-xl font-semibold text-brand product-name">......</h3>
+      <p class="text-gray-700 mb-2">......</p>
       <p class="font-bold text-gray-900 line-through">KES </p>
-      <p class="font-bold text-green-600 mb-3">KES </p>
-      <a href="https://wa.me/254105837658?text=I'm%20interested%20in%20this%20product" 
+      <p class="font-bold text-green-600 mb-3 product-price">KES </p>
+      <a href="#" 
          target="_blank" 
-         class="bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
-        Buy Now
+         class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
+        Coming Soon
       </a>
     </div>
 
   </div>
 </section>
+
+<script>
+  // WhatsApp number
+  const whatsappNumber = "254105837658";
+
+  // Loop through all products and set WhatsApp link
+  document.querySelectorAll(".product").forEach(product => {
+    const name = product.querySelector(".product-name").innerText.trim();
+    const price = product.querySelector(".product-price").innerText.replace("KES", "").trim();
+    const btn = product.querySelector(".buy-btn");
+
+    // Check if product is placeholder
+    const isPlaceholder = name === "Product Name" || price === "" || price === "KES";
+
+    if (isPlaceholder) {
+      // Disable button
+      btn.classList.remove("bg-brand", "hover:bg-brand-dark");
+      btn.classList.add("bg-gray-400", "cursor-not-allowed");
+      btn.innerText = "Coming Soon";
+      btn.removeAttribute("href");
+    } else {
+      // Enable button with WhatsApp link
+      const message = `I'm interested in the ${name} (KES ${price})`;
+      btn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    }
+  });
+</script>
+
   
 <!-- Contact -->
   <section id="contact" class="py-16 bg-gray-100 text-center px-4">
