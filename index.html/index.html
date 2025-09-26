@@ -78,11 +78,11 @@
   class="relative min-h-screen w-full flex items-center justify-center text-white bg-cover bg-center bg-no-repeat"
   style="background-image: url('https://i.postimg.cc/SRwzTj5R/solar.jpg');">
   
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
 
   <!-- Content -->
-  <div class="relative z-10 text-center px-4 max-w-2xl">
+  <div class="relative z-10 text-center px-4 max-w-2xl animate-fadeInUp">
     <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-tight">
       Smart Power Safe Homes
     </h1>
@@ -90,11 +90,28 @@
       Experts in Solar and Electrical Installations, Trusted Services Across The Globe
     </p>
     <a href="#contact" 
-       class="bg-blue-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-blue-700 transition inline-block">
+       class="bg-blue-600 px-6 py-3 rounded-full text-white font-semibold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/50 transition inline-block">
       GET A QUOTE NOW
     </a>
   </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+    <span class="animate-bounce text-white text-3xl">⌄</span>
+  </div>
 </section>
+
+<!-- Extra animation -->
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+</style>
+
 
 
   <!-- About Us -->
