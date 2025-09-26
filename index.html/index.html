@@ -218,7 +218,7 @@
 </section>
 
 
-<section id="gallery" class="py-16 bg-white container mx-auto px-4">
+section id="gallery" class="py-16 bg-white container mx-auto px-4">
   <h2 class="text-3xl font-bold text-center text-brand mb-10">Gallery</h2>
 
   <!-- Solar Section -->
@@ -258,72 +258,34 @@
 
 <!-- Lightbox Modal -->
 <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
-  <!-- Close Button -->
   <span id="closeLightbox" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
-  
-  <!-- Prev Button -->
-  <span id="prevBtn" class="absolute left-5 text-white text-4xl cursor-pointer select-none">&#10094;</span>
-  
-  <!-- Image -->
   <img id="lightboxImg" src="" class="max-w-4xl max-h-[90vh] rounded shadow-lg">
-  
-  <!-- Next Button -->
-  <span id="nextBtn" class="absolute right-5 text-white text-4xl cursor-pointer select-none">&#10095;</span>
 </div>
 
 <script>
+  // Get elements
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
   const closeBtn = document.getElementById("closeLightbox");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
   const images = document.querySelectorAll(".lightbox-img");
 
-  let currentIndex = 0;
-
-  // Open Lightbox
-  images.forEach((img, index) => {
+  // Open lightbox
+  images.forEach(img => {
     img.addEventListener("click", () => {
-      currentIndex = index;
-      showImage();
       lightbox.classList.remove("hidden");
+      lightboxImg.src = img.src;
     });
   });
 
-  // Show Image by index
-  function showImage() {
-    lightboxImg.src = images[currentIndex].src;
-  }
-
-  // Close Lightbox
+  // Close lightbox
   closeBtn.addEventListener("click", () => {
     lightbox.classList.add("hidden");
-  });
-
-  // Navigate
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage();
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage();
   });
 
   // Close when clicking outside image
   lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) {
       lightbox.classList.add("hidden");
-    }
-  });
-
-  // Keyboard Navigation
-  document.addEventListener("keydown", (e) => {
-    if (!lightbox.classList.contains("hidden")) {
-      if (e.key === "ArrowLeft") prevBtn.click();
-      if (e.key === "ArrowRight") nextBtn.click();
-      if (e.key === "Escape") closeBtn.click();
     }
   });
 </script>
