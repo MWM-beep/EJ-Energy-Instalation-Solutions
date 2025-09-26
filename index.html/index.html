@@ -22,21 +22,54 @@
   </div>
 
   <!-- Navbar -->
-  <header class="bg-brand-dark text-white shadow">
-    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <img src="https://i.postimg.cc/NfkvZzCq/Screenshot-20250616-230408-Instagram.jpg" class="w-10 h-10 rounded-full" alt="Logo">
-        <span class="text-xl font-bold">EJ Energy Solutions</span>
-      </div>
-      <ul class="flex space-x-5">
-        <li><a href="#electrical" class="hover:text-brand">Electricals</a></li>
-        <li><a href="#solar" class="hover:text-brand">Solar</a></li>
-        <li><a href="#about" class="hover:text-brand">About Us</a></li>
-        <li><a href="#gallery" class="hover:text-brand">Gallery</a></li>
-        <li><a href="#contact" class="hover:text-brand">Contact Us</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="bg-brand-dark text-white shadow">
+  <nav class="container mx-auto max-w-7xl px-4 py-4 flex justify-between items-center" aria-label="Main Navigation">
+    
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img src="https://i.postimg.cc/NfkvZzCq/Screenshot-20250616-230408-Instagram.jpg" 
+           class="w-10 h-10 rounded-full" 
+           alt="EJ Energy Solutions Logo">
+      <span class="text-xl font-bold">EJ Energy Solutions</span>
+    </div>
+    
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-5">
+      <li><a href="#electrical" class="hover:text-brand">Electricals</a></li>
+      <li><a href="#solar" class="hover:text-brand">Solar</a></li>
+      <li><a href="#about" class="hover:text-brand">About Us</a></li>
+      <li><a href="#gallery" class="hover:text-brand">Gallery</a></li>
+      <li><a href="#contact" class="hover:text-brand">Contact Us</a></li>
+    </ul>
+    
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    
+  </nav>
+  
+  <!-- Mobile Dropdown -->
+  <div id="menu" class="hidden md:hidden bg-brand-dark text-white px-4 py-3">
+    <a href="#electrical" class="block py-2 hover:text-brand">Electricals</a>
+    <a href="#solar" class="block py-2 hover:text-brand">Solar</a>
+    <a href="#about" class="block py-2 hover:text-brand">About Us</a>
+    <a href="#gallery" class="block py-2 hover:text-brand">Gallery</a>
+    <a href="#contact" class="block py-2 hover:text-brand">Contact Us</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
 
 <!-- Hero -->
 <section id="hero" 
