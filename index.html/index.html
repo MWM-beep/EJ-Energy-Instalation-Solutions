@@ -35,15 +35,15 @@
     
     <!-- Desktop Menu -->
     <ul class="hidden md:flex space-x-5">
-      <li><a href="#electrical" class="hover:text-brand">Electricals</a></li>
-      <li><a href="#solar" class="hover:text-brand">Solar</a></li>
-      <li><a href="#about" class="hover:text-brand">About Us</a></li>
-      <li><a href="#gallery" class="hover:text-brand">Gallery</a></li>
-      <li><a href="#contact" class="hover:text-brand">Contact Us</a></li>
+      <li><a href="#electrical" class="nav-link hover:text-brand">Electricals</a></li>
+      <li><a href="#solar" class="nav-link hover:text-brand">Solar</a></li>
+      <li><a href="#about" class="nav-link hover:text-brand">About Us</a></li>
+      <li><a href="#gallery" class="nav-link hover:text-brand">Gallery</a></li>
+      <li><a href="#contact" class="nav-link hover:text-brand">Contact Us</a></li>
     </ul>
     
     <!-- Mobile Hamburger -->
-    <button id="menu-btn" class="md:hidden focus:outline-none">
+    <button id="menu-btn" aria-expanded="false" class="md:hidden focus:outline-none">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
               d="M4 6h16M4 12h16M4 18h16"/>
@@ -53,22 +53,46 @@
   </nav>
   
   <!-- Mobile Dropdown -->
-  <div id="menu" class="hidden md:hidden bg-brand-dark text-white px-4 py-3">
-    <a href="#electrical" class="block py-2 hover:text-brand">Electricals</a>
-    <a href="#solar" class="block py-2 hover:text-brand">Solar</a>
-    <a href="#about" class="block py-2 hover:text-brand">About Us</a>
-    <a href="#gallery" class="block py-2 hover:text-brand">Gallery</a>
-    <a href="#contact" class="block py-2 hover:text-brand">Contact Us</a>
+  <div id="menu" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out md:hidden bg-brand-dark text-white px-4">
+    <a href="#electrical" class="nav-link block py-2 hover:text-brand">Electricals</a>
+    <a href="#solar" class="nav-link block py-2 hover:text-brand">Solar</a>
+    <a href="#about" class="nav-link block py-2 hover:text-brand">About Us</a>
+    <a href="#gallery" class="nav-link block py-2 hover:text-brand">Gallery</a>
+    <a href="#contact" class="nav-link block py-2 hover:text-brand">Contact Us</a>
   </div>
 </header>
 
 <script>
   const btn = document.getElementById("menu-btn");
   const menu = document.getElementById("menu");
+  const links = document.querySelectorAll(".nav-link");
+
+  // Toggle mobile menu
   btn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
+    const expanded = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", !expanded);
+
+    if (menu.style.maxHeight && menu.style.maxHeight !== "0px") {
+      menu.style.maxHeight = "0px";
+    } else {
+      menu.style.maxHeight = menu.scrollHeight + "px";
+    }
+  });
+
+  // Highlight active link while scrolling
+  window.addEventListener("scroll", () => {
+    let fromTop = window.scrollY + 100;
+    links.forEach(link => {
+      let section = document.querySelector(link.getAttribute("href"));
+      if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+        link.classList.add("text-brand");
+      } else {
+        link.classList.remove("text-brand");
+      }
+    });
   });
 </script>
+
 
 
 
