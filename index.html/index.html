@@ -317,39 +317,15 @@
 <!-- Alpine.js for dropdowns -->
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-
 <!-- Floating Cart Button -->
 <div id="cart-icon" 
-     class="hidden fixed bottom-6 right-6 bg-brand text-white p-4 rounded-full shadow-lg cursor-pointer flex items-center justify-center hover:bg-brand-dark transition relative z-50">
+     class="hidden fixed bottom-6 right-6 bg-brand text-white p-4 rounded-full shadow-lg cursor-pointer flex items-center justify-center hover:bg-brand-dark transition relative">
   🛒
   <!-- Cart Count Badge -->
   <span id="cart-count" 
         class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow">
     0
   </span>
-</div>
-
-<!-- Cart Sidebar -->
-<div id="cart-sidebar" 
-     class="fixed top-0 right-0 h-full w-80 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-40 flex flex-col">
-  
-  <!-- Header -->
-  <div class="p-4 border-b flex justify-between items-center">
-    <h2 class="text-lg font-bold">Your Cart</h2>
-    <button id="close-cart" class="text-gray-500 hover:text-black">✖</button>
-  </div>
-  
-  <!-- Cart Items -->
-  <div id="cart-items" class="flex-1 p-4 overflow-y-auto">
-    <p class="text-gray-500 text-sm">Your cart is empty.</p>
-  </div>
-  
-  <!-- Footer -->
-  <div class="p-4 border-t">
-    <button class="w-full bg-brand text-white py-2 rounded hover:bg-brand-dark">
-      Checkout
-    </button>
-  </div>
 </div>
 
 <style>
@@ -365,38 +341,20 @@
 </style>
 
 <script>
-  let cartCount = parseInt(localStorage.getItem("cartCount")) || 0;
+  let cartCount = 0;
   const cartIcon = document.getElementById("cart-icon");
   const cartCountSpan = document.getElementById("cart-count");
-  const cartSidebar = document.getElementById("cart-sidebar");
-  const closeCartBtn = document.getElementById("close-cart");
-  const cartItemsDiv = document.getElementById("cart-items");
 
-  // Initial load
-  updateCart();
-
-  // Add to cart example (use in product buttons)
-  function addToCart(product = "Sample Item") {
+  function addToCart() {
     cartCount++;
-    localStorage.setItem("cartCount", cartCount);
-
-    // Save product (basic example)
-    let items = JSON.parse(localStorage.getItem("cartItems")) || [];
-    items.push(product);
-    localStorage.setItem("cartItems", JSON.stringify(items));
-
     updateCart();
   }
 
   function removeFromCart() {
-    cartCount = Math.max(0, cartCount - 1);
-    localStorage.setItem("cartCount", cartCount);
-
-    let items = JSON.parse(localStorage.getItem("cartItems")) || [];
-    items.pop();
-    localStorage.setItem("cartItems", JSON.stringify(items));
-
-    updateCart();
+    if (cartCount > 0) {
+      cartCount--;
+      updateCart();
+    }
   }
 
   function updateCart() {
@@ -405,40 +363,15 @@
     if (cartCount > 0) {
       cartIcon.classList.remove("hidden");
 
-      // Pulse animation
+      // Trigger pulse animation
       cartCountSpan.classList.remove("pulse");
-      void cartCountSpan.offsetWidth;
+      void cartCountSpan.offsetWidth; // restart animation
       cartCountSpan.classList.add("pulse");
     } else {
       cartIcon.classList.add("hidden");
     }
-
-    // Update sidebar list
-    let items = JSON.parse(localStorage.getItem("cartItems")) || [];
-    if (items.length === 0) {
-      cartItemsDiv.innerHTML = `<p class="text-gray-500 text-sm">Your cart is empty.</p>`;
-    } else {
-      cartItemsDiv.innerHTML = items.map((item, i) => `
-        <div class="flex justify-between items-center border-b py-2">
-          <span>${item}</span>
-          <button onclick="removeFromCart()" class="text-red-500 hover:text-red-700 text-sm">Remove</button>
-        </div>
-      `).join("");
-    }
   }
-
-  // Open sidebar when cart icon clicked
-  cartIcon.addEventListener("click", () => {
-    cartSidebar.classList.remove("translate-x-full");
-  });
-
-  // Close sidebar
-  closeCartBtn.addEventListener("click", () => {
-    cartSidebar.classList.add("translate-x-full");
-  });
 </script>
-
-
 
 
 <!-- Sales Section -->
