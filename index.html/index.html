@@ -369,223 +369,227 @@
 <section id="sales" class="py-16 bg-white text-center px-4">
   <h2 class="text-3xl font-bold text-brand mb-10">Products for Sale</h2>
 
-  <!-- Categories -->
-  <div class="max-w-6xl mx-auto space-y-12">
+  <div class="max-w-6xl mx-auto" x-data="{ openSection: 'batteries' }">
+
+    <!-- Category Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-10">
+      <button 
+        class="px-6 py-2 rounded font-semibold border transition-colors"
+        :class="openSection === 'batteries' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+        @click="openSection = 'batteries'">Batteries</button>
+
+      <button 
+        class="px-6 py-2 rounded font-semibold border transition-colors"
+        :class="openSection === 'panels' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+        @click="openSection = 'panels'">Solar Panels</button>
+
+      <button 
+        class="px-6 py-2 rounded font-semibold border transition-colors"
+        :class="openSection === 'inverters' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+        @click="openSection = 'inverters'">Inverters</button>
+
+      <button 
+        class="px-6 py-2 rounded font-semibold border transition-colors"
+        :class="openSection === 'fittings' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+        @click="openSection = 'fittings'">Fittings & Cables</button>
+    </div>
 
     <!-- Batteries -->
-    <div>
-      <h3 class="text-2xl font-bold text-brand mb-6 border-b pb-2">Batteries</h3>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Product 1 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/pXtyJH8L/byd-solar-battery.jpg" alt="BYD Battery" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">BYD Battery</h3>
-          <p class="text-gray-700 mb-2">BYD LV5.0 battery box 5kwh</p>
-          <p class="font-bold text-gray-900 line-through">KES 135,000</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES 122,500</p>
-          <div class="flex gap-2">
-            <a href="#" target="_blank" class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">Buy Now</a>
-            <button class="add-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Add to Cart</button>
-          </div>
+    <div x-show="openSection === 'batteries'" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/pXtyJH8L/byd-solar-battery.jpg" alt="BYD Battery" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">BYD Battery</h3>
+        <p class="text-gray-700 mb-2">BYD LV5.0 battery box 5kwh</p>
+        <p class="font-bold text-gray-900 line-through">KES 135,000</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES 122,500</p>
+        <div class="flex gap-2">
+          <a href="#" target="_blank" class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">Buy Now</a>
+          <button class="add-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Add to Cart</button>
         </div>
-        <!-- product 2 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/6q8S1Xhb/goodwe-battery.jpg" alt="Goodwe Battery" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Goodwe Battery</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" target="_blank" class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">Buy Now</a>
-            <button class="add-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Add to Cart</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/6q8S1Xhb/goodwe-battery.jpg" alt="Goodwe Battery" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Goodwe Battery</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" target="_blank" class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">Buy Now</a>
+          <button class="add-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Add to Cart</button>
         </div>
-        <!-- product 2 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/jSjbypVj/byd.jpg" alt="Battery" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/jSjbypVj/byd.jpg" alt="Battery" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/Qtd1DNwP/battery.jpg" alt="Battery" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/Qtd1DNwP/battery.jpg" alt="Battery" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
       </div>
     </div>
 
     <!-- Solar Panels -->
-    <div>
-      <h3 class="text-2xl font-bold text-brand mb-6 border-b pb-2">Solar Panels</h3>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Product 1 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+    <div x-show="openSection === 'panels'" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <!-- product 2 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
       </div>
     </div>
 
     <!-- Inverters -->
-    <div>
-      <h3 class="text-2xl font-bold text-brand mb-6 border-b pb-2">Inverters</h3>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Product 1 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/RhRbp0rH/goodwe-inverter.jpg" alt="Goodwe Inverter" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Goodwe Inverter</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+    <div x-show="openSection === 'inverters'" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/RhRbp0rH/goodwe-inverter.jpg" alt="Goodwe Inverter" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Goodwe Inverter</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <!-- product 2 -->
-         <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/0Q6kqL5g/TBB-inverter.jpg" alt="TBB Inverter" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">TBB Inverter</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/0Q6kqL5g/TBB-inverter.jpg" alt="TBB Inverter" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">TBB Inverter</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/ncNLcV9c/raion-inverter.jpg" alt="Raion Inverter" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Raion Inverter</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/ncNLcV9c/raion-inverter.jpg" alt="Raion Inverter" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Raion Inverter</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-         <div class="bg-gray-100 p-4 rounded shadow text-left product">
-          <img src="https://i.postimg.cc/Gp8JTmqt/deye-invertor.jpg" alt="Deye Inverter" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Deye Inverter</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product">
+        <img src="https://i.postimg.cc/Gp8JTmqt/deye-invertor.jpg" alt="Deye Inverter" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Deye Inverter</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
       </div>
     </div>
 
     <!-- Fittings & Cables -->
-    <div>
-      <h3 class="text-2xl font-bold text-brand mb-6 border-b pb-2">Fittings & Cables</h3>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-       <!-- Product 1 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+    <div x-show="openSection === 'fittings'" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <!-- product 2 -->
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
-        <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
-          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
-          <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
-          <p class="text-gray-700 mb-2">Stay tuned for updates</p>
-          <p class="font-bold text-gray-900 line-through">KES —</p>
-          <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
-          <div class="flex gap-2">
-            <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
-            <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
-          </div>
+      </div>
+      <div class="bg-gray-100 p-4 rounded shadow text-left product placeholder">
+        <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-40 object-cover rounded mb-3">
+        <h3 class="text-xl font-semibold text-brand product-name">Coming Soon</h3>
+        <p class="text-gray-700 mb-2">Stay tuned for updates</p>
+        <p class="font-bold text-gray-900 line-through">KES —</p>
+        <p class="font-bold text-green-600 mb-3 product-price">KES —</p>
+        <div class="flex gap-2">
+          <a href="#" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">Coming Soon</a>
+          <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">N/A</button>
         </div>
       </div>
     </div>
 
   </div>
+</section>
+
+<script src="//unpkg.com/alpinejs" defer></script>
 
 <!-- Cart Drawer -->
 <div id="cart-drawer">
