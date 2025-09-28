@@ -318,51 +318,6 @@
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 
-<section id="projects" class="py-16 bg-white container mx-auto px-4">
-  <h2 class="text-3xl font-bold text-center text-brand mb-10">Projects</h2>
-    <div class="grid md:grid-cols-4 gap-4">
-      <img src="https://i.postimg.cc/ZYdHpbZM/EJ-Energy.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 1">
-      <img src="https://i.postimg.cc/SstPsD6Y/EJ-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 2">
-      <img src="https://i.postimg.cc/B6hfQvsM/Whats-App-Image-2025-06-17-at-13-01-31-3.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 3">
-      <img src="https://i.postimg.cc/44P6zmqw/Ej-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 4">
-      <img src="https://i.postimg.cc/1txmjTrm/heat-pump.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 5">
-    </div>
-  </div>
-
-<!-- Lightbox Modal -->
-<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
-  <span id="closeLightbox" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
-  <img id="lightboxImg" src="" class="max-w-4xl max-h-[90vh] rounded shadow-lg">
-</div>
-
-<script>
-  // Get elements
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  const closeBtn = document.getElementById("closeLightbox");
-  const images = document.querySelectorAll(".lightbox-img");
-
-  // Open lightbox
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      lightbox.classList.remove("hidden");
-      lightboxImg.src = img.src;
-    });
-  });
-
-  // Close lightbox
-  closeBtn.addEventListener("click", () => {
-    lightbox.classList.add("hidden");
-  });
-
-  // Close when clicking outside image
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.add("hidden");
-    }
-  });
-</script>
-
 </section>
 <!-- Floating Cart Button -->
 <div id="cart-icon" 
@@ -518,6 +473,51 @@
   });
 </script>
 
+  
+<section id="projects" class="py-16 bg-white container mx-auto px-4">
+  <h2 class="text-3xl font-bold text-center text-brand mb-10">Projects</h2>
+    <div class="grid md:grid-cols-4 gap-4">
+      <img src="https://i.postimg.cc/ZYdHpbZM/EJ-Energy.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 1">
+      <img src="https://i.postimg.cc/SstPsD6Y/EJ-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 2">
+      <img src="https://i.postimg.cc/B6hfQvsM/Whats-App-Image-2025-06-17-at-13-01-31-3.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 3">
+      <img src="https://i.postimg.cc/44P6zmqw/Ej-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 4">
+      <img src="https://i.postimg.cc/1txmjTrm/heat-pump.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 5">
+    </div>
+  </div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+  <span id="closeLightbox" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
+  <img id="lightboxImg" src="" class="max-w-4xl max-h-[90vh] rounded shadow-lg">
+</div>
+
+<script>
+  // Get elements
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("closeLightbox");
+  const images = document.querySelectorAll(".lightbox-img");
+
+  // Open lightbox
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.classList.remove("hidden");
+      lightboxImg.src = img.src;
+    });
+  });
+
+  // Close lightbox
+  closeBtn.addEventListener("click", () => {
+    lightbox.classList.add("hidden");
+  });
+
+  // Close when clicking outside image
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add("hidden");
+    }
+  });
+</script>
 
 <!-- Contact -->
 <section id="contact" class="py-16 bg-gray-100 text-center px-4">
