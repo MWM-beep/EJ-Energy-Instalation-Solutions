@@ -318,13 +318,17 @@
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 
-</section>
 <!-- Floating Cart Button -->
 <div id="cart-icon" 
-     class="fixed top-6 right-6 bg-brand text-white px-4 py-2 rounded-full shadow-lg cursor-pointer flex items-center gap-2 hover:bg-brand-dark transition">
-  🛒 Cart 
-  <span id="cart-count" class="ml-2 bg-red-600 text-white text-sm font-bold px-2 py-0.5 rounded-full">0</span>
+     class="fixed bottom-6 right-6 bg-brand text-white p-4 rounded-full shadow-lg cursor-pointer flex items-center justify-center hover:bg-brand-dark transition relative">
+  🛒
+  <!-- Cart Count Badge -->
+  <span id="cart-count" 
+        class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow">
+    0
+  </span>
 </div>
+
 
 <!-- Sales Section -->
 <section id="sales" class="py-16 bg-white text-center px-4">
