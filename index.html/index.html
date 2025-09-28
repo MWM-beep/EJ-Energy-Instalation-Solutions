@@ -35,7 +35,7 @@
     <!-- Desktop Menu -->
     <ul class="hidden md:flex space-x-5">
       <li><a href="#about" class="nav-link hover:text-brand">About us</a></li>
-      <li><a href="#company" class="nav-link hover:text-brand">Company Profile</a></li>
+      <li><a href="#profile" class="nav-link hover:text-brand">Company Profile</a></li>
       <li><a href="#projects" class="nav-link hover:text-brand">Projects</a></li>
       <li><a href="#sales" class="nav-link hover:text-brand">products For Sale</a></li>
       <li><a href="#contact" class="nav-link hover:text-brand">Contact Us</a></li>
@@ -54,7 +54,7 @@
   <!-- Mobile Dropdown -->
   <div id="menu" class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out md:hidden bg-brand-dark text-white px-4">
     <a href="#about" class="nav-link block py-2 hover:text-brand">About Us</a>
-    <a href="#company" class="nav-link block py-2 hover:text-brand">Company Profile</a>
+    <a href="#profile" class="nav-link block py-2 hover:text-brand">Company Profile</a>
     <a href="#projects" class="nav-link block py-2 hover:text-brand">Projects</a>
     <a href="#sales" class="nav-link block py-2 hover:text-brand">Products For sale</a>
     <a href="#contact" class="nav-link block py-2 hover:text-brand">Contact Us</a>
@@ -181,85 +181,142 @@
 <!-- Company Profile Section -->
 <section id="profile" class="py-16 bg-gray-100 text-center px-4">
   <h2 class="text-3xl font-bold text-brand mb-6">Company Profile</h2>
-  <div class="max-w-5xl mx-auto text-left bg-white shadow-md p-8 rounded-lg space-y-6">
+  <article class="max-w-5xl mx-auto text-left bg-white shadow-md p-8 rounded-lg space-y-6" x-data="{ open: null }">
 
     <!-- Company Overview -->
     <div>
-      <h3 class="text-2xl font-semibold text-brand mb-2">EJ Energy Solutions</h3>
-      <p>
-        EJ Energy Solutions is a fully registered and licensed company headquartered in Nairobi, Kenya. 
-        We provide end-to-end energy and electrical solutions for residential, commercial, and industrial clients. 
-        Our portfolio spans electrical installations, solar power systems, lighting, security solutions, generator backup systems, smart home technology, and EV charging stations.
-      </p>
+      <h3 
+        @click="open === 1 ? open = null : open = 1" 
+        class="text-2xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        EJ Energy Solutions
+      </h3>
+      <div x-show="open === 1" x-collapse>
+        <p>
+          EJ Energy Solutions is a fully registered and licensed company headquartered in Nairobi, Kenya. 
+          We provide end-to-end energy and electrical solutions for residential, commercial, and industrial clients. 
+          Our portfolio spans electrical installations, solar power systems, lighting, security solutions, generator backup systems, smart home technology, and EV charging stations.
+        </p>
+      </div>
     </div>
 
     <!-- Mission -->
     <div>
-      <h4 class="text-xl font-semibold text-brand mb-2">Our Mission</h4>
-      <p>
-        To deliver innovative, reliable, and energy-efficient solutions while upholding the highest standards of safety, professionalism, and customer satisfaction.
-      </p>
+      <h3 
+        @click="open === 2 ? open = null : open = 2" 
+        class="text-xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        Our Mission
+      </h3>
+      <div x-show="open === 2" x-collapse>
+        <p>
+          To deliver innovative, reliable, and energy-efficient solutions while upholding the highest standards of safety, professionalism, and customer satisfaction.
+        </p>
+      </div>
     </div>
 
     <!-- Vision -->
     <div>
-      <h4 class="text-xl font-semibold text-brand mb-2">Our Vision</h4>
-      <p>
-        To become the region’s leading provider of electrical and energy solutions, recognized for quality, innovation, and service excellence.
-      </p>
+      <h3 
+        @click="open === 3 ? open = null : open = 3" 
+        class="text-xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        Our Vision
+      </h3>
+      <div x-show="open === 3" x-collapse>
+        <p>
+          To become the region’s leading provider of electrical and energy solutions, recognized for quality, innovation, and service excellence.
+        </p>
+      </div>
     </div>
 
     <!-- Core Values -->
     <div>
-      <h4 class="text-xl font-semibold text-brand mb-2">Our Core Values</h4>
-      <ul class="list-disc list-inside space-y-1">
-        <li>Quality & Excellence</li>
-        <li>Integrity & Professionalism</li>
-        <li>Innovation & Continuous Improvement</li>
-        <li>Customer Focus & Reliability</li>
-        <li>Sustainability & Safety</li>
-      </ul>
+      <h3 
+        @click="open === 4 ? open = null : open = 4" 
+        class="text-xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        Our Core Values
+      </h3>
+      <div x-show="open === 4" x-collapse>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Quality & Excellence</li>
+          <li>Integrity & Professionalism</li>
+          <li>Innovation & Continuous Improvement</li>
+          <li>Customer Focus & Reliability</li>
+          <li>Sustainability & Safety</li>
+        </ul>
+      </div>
     </div>
 
     <!-- Services -->
     <div>
-      <h4 class="text-xl font-semibold text-brand mb-2">Our Services</h4>
-      <ul class="list-disc list-inside space-y-1">
-        <li>Electrical Installations (Domestic, Commercial & Industrial)</li>
-        <li>Solar Power Systems (Off-grid, Hybrid & Grid-tied)</li>
-        <li>Security Solutions (CCTV, Alarms, Access Control, Electric Fencing)</li>
-        <li>Backup Generator Systems</li>
-        <li>Smart Home Automation</li>
-        <li>EV Charging Stations</li>
-        <li>Preventive & Emergency Maintenance</li>
-      </ul>
+      <h3 
+        @click="open === 5 ? open = null : open = 5" 
+        class="text-xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        Our Services
+      </h3>
+      <div x-show="open === 5" x-collapse>
+        <ul class="list-disc list-inside space-y-1">
+          <li>Electrical Installations (Domestic, Commercial & Industrial)</li>
+          <li>Solar Power Systems (Off-grid, Hybrid & Grid-tied)</li>
+          <li>Security Solutions (CCTV, Alarms, Access Control, Electric Fencing)</li>
+          <li>Backup Generator Systems</li>
+          <li>Smart Home Automation</li>
+          <li>EV Charging Stations</li>
+          <li>Preventive & Emergency Maintenance</li>
+        </ul>
+      </div>
     </div>
 
     <!-- Certifications -->
     <div>
-      <h4 class="text-xl font-semibold text-brand mb-2">Certifications & Compliance</h4>
-      <p>
-        We operate in compliance with <strong>ERC, EPRA, IEC, and KEBS</strong> standards. 
-        Our engineers and technicians are fully certified and trained to deliver safe, reliable, and efficient installations that meet local and international requirements.
-      </p>
+      <h3 
+        @click="open === 6 ? open = null : open = 6" 
+        class="text-xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        Certifications & Compliance
+      </h3>
+      <div x-show="open === 6" x-collapse>
+        <p>
+          We operate in compliance with <strong>ERC, EPRA, IEC, and KEBS</strong> standards. 
+          Our engineers and technicians are fully certified and trained to deliver safe, reliable, and efficient installations that meet local and international requirements.
+        </p>
+      </div>
     </div>
 
     <!-- Commitment -->
     <div>
-      <h4 class="text-xl font-semibold text-brand mb-2">Our Commitment</h4>
-      <p>
-        At EJ Energy Solutions, we are committed to excellence. 
-        Every project we undertake is guided by a promise to deliver sustainable, cost-effective, and customer-focused solutions that stand the test of time.
-      </p>
+      <h3 
+        @click="open === 7 ? open = null : open = 7" 
+        class="text-xl font-semibold text-brand mb-2 cursor-pointer underline"
+      >
+        Our Commitment
+      </h3>
+      <div x-show="open === 7" x-collapse>
+        <p>
+          At EJ Energy Solutions, we are committed to excellence. 
+          Every project we undertake is guided by a promise to deliver sustainable, cost-effective, and customer-focused solutions that stand the test of time.
+        </p>
+      </div>
     </div>
 
     <!-- CTA -->
-    <p class="mt-6 text-lg font-medium text-center">
-      For professional energy and electrical solutions, <a href="#contact" class="text-brand font-bold hover:underline">contact us today</a> for a consultation or detailed quotation.
-    </p>
+    <div class="bg-brand/10 p-4 rounded-lg text-center">
+      <p class="mt-2 text-lg font-medium">
+        For professional energy and electrical solutions, 
+        <a href="#contact" class="text-brand font-bold hover:underline">contact us today</a> 
+        for a consultation or detailed quotation.
+      </p>
+    </div>
 
-  </div>
+  </article>
 </section>
+
+<!-- Alpine.js for dropdowns -->
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 
 <section id="projects" class="py-16 bg-white container mx-auto px-4">
   <h2 class="text-3xl font-bold text-center text-brand mb-10">Projects</h2>
