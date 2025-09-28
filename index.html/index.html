@@ -391,6 +391,13 @@
 </script>
 
 </section>
+<!-- Floating Cart Button -->
+<div id="cart-icon" 
+     class="fixed top-6 right-6 bg-brand text-white px-4 py-2 rounded-full shadow-lg cursor-pointer flex items-center gap-2 hover:bg-brand-dark transition">
+  🛒 Cart 
+  <span id="cart-count" class="ml-2 bg-red-600 text-white text-sm font-bold px-2 py-0.5 rounded-full">0</span>
+</div>
+
 <!-- Sales Section -->
 <section id="sales" class="py-16 bg-white text-center px-4">
   <h2 class="text-3xl font-bold text-brand mb-10">Products for Sale</h2>
@@ -403,11 +410,15 @@
       <p class="text-gray-700 mb-2">BYD LV5.0 battery box 5kwh</p>
       <p class="font-bold text-gray-900 line-through">KES 135,000</p>
       <p class="font-bold text-green-600 mb-3 product-price">KES 122,500</p>
-      <a href="#" 
-         target="_blank" 
-         class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
-        Buy Now
-      </a>
+      <div class="flex gap-2">
+        <a href="#" target="_blank" 
+           class="buy-btn bg-brand text-white px-4 py-2 rounded hover:bg-brand-dark transition">
+          Buy Now
+        </a>
+        <button class="add-cart-btn bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+          Add to Cart
+        </button>
+      </div>
     </div>
 
     <!-- Product 2 (Placeholder) -->
@@ -417,56 +428,123 @@
       <p class="text-gray-700 mb-2">......</p>
       <p class="font-bold text-gray-900 line-through">KES </p>
       <p class="font-bold text-green-600 mb-3 product-price">KES </p>
-      <a href="#" 
-         target="_blank" 
-         class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
-        Coming Soon
-      </a>
+      <div class="flex gap-2">
+        <a href="#" target="_blank" class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
+          Coming Soon
+        </a>
+        <button disabled class="add-cart-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
+          N/A
+        </button>
+      </div>
     </div>
 
-    <!-- Product 3 (Placeholder) -->
-    <div class="bg-gray-100 p-4 rounded shadow text-left product">
-      <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Product 3" class="w-full h-40 object-cover rounded mb-3">
-      <h3 class="text-xl font-semibold text-brand product-name">......</h3>
-      <p class="text-gray-700 mb-2">......</p>
-      <p class="font-bold text-gray-900 line-through">KES </p>
-      <p class="font-bold text-green-600 mb-3 product-price">KES </p>
-      <a href="#" 
-         target="_blank" 
-         class="buy-btn bg-gray-400 text-white px-4 py-2 rounded cursor-not-allowed">
-        Coming Soon
-      </a>
-    </div>
+  </div>
 
+  <!-- Cart Section -->
+  <div id="cart" class="mt-10 max-w-4xl mx-auto bg-gray-50 p-6 rounded shadow text-left hidden">
+    <h3 class="text-2xl font-bold text-brand mb-4">Your Cart</h3>
+    <ul id="cart-items" class="mb-4"></ul>
+    <p class="font-bold text-lg">Total: <span id="cart-total">KES 0</span></p>
+    <a id="checkout-btn" 
+       href="#" 
+       target="_blank" 
+       class="mt-4 inline-block bg-brand text-white px-6 py-2 rounded hover:bg-brand-dark transition">
+      Checkout on WhatsApp
+    </a>
   </div>
 </section>
 
 <script>
-  // WhatsApp number
   const whatsappNumber = "254105837658";
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Loop through all products and set WhatsApp link
+  // Setup Buy Now links
   document.querySelectorAll(".product").forEach(product => {
     const name = product.querySelector(".product-name").innerText.trim();
-    const price = product.querySelector(".product-price").innerText.replace("KES", "").trim();
+    const price = product.querySelector(".product-price").innerText.trim();
     const btn = product.querySelector(".buy-btn");
+    const isPlaceholder = name.includes("...") || price === "" || price === "KES";
 
-    // Check if product is placeholder
-    const isPlaceholder = name === "Product Name" || price === "" || price === "KES";
-
-    if (isPlaceholder) {
-      // Disable button
-      btn.classList.remove("bg-brand", "hover:bg-brand-dark");
-      btn.classList.add("bg-gray-400", "cursor-not-allowed");
-      btn.innerText = "Coming Soon";
-      btn.removeAttribute("href");
-    } else {
-      // Enable button with WhatsApp link
-      const message = `I'm interested in the ${name} (KES ${price})`;
+    if (!isPlaceholder) {
+      const message = `I'm interested in the ${name} (${price}). Please provide more details.`;
       btn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    } else {
+      btn.classList.add("cursor-not-allowed");
+      btn.removeAttribute("href");
+    }
+
+    // Add to Cart functionality
+    const addCartBtn = product.querySelector(".add-cart-btn");
+    if (!isPlaceholder && addCartBtn) {
+      addCartBtn.addEventListener("click", () => {
+        cart.push({ name, price });
+        saveCart();
+        updateCart();
+      });
     }
   });
+
+  // Save cart to localStorage
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  // Update Cart Display & Counter
+  function updateCart() {
+    const cartSection = document.getElementById("cart");
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const checkoutBtn = document.getElementById("checkout-btn");
+    const cartCount = document.getElementById("cart-count");
+
+    // Update cart counter badge
+    cartCount.innerText = cart.length;
+
+    if (cart.length === 0) {
+      cartSection.classList.add("hidden");
+      localStorage.removeItem("cart");
+      return;
+    }
+
+    cartSection.classList.remove("hidden");
+    cartItems.innerHTML = "";
+
+    let total = 0;
+    cart.forEach((item, index) => {
+      const priceNum = parseInt(item.price.replace(/[^0-9]/g, ""));
+      total += priceNum;
+
+      const li = document.createElement("li");
+      li.classList.add("flex", "justify-between", "mb-2");
+      li.innerHTML = `
+        <span>${item.name} - ${item.price}</span>
+        <button onclick="removeFromCart(${index})" class="text-red-600 hover:underline">Remove</button>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.innerText = `KES ${total.toLocaleString()}`;
+
+    const message = `Hello, I'm interested in buying the following products:\n\n${cart.map(item => `- ${item.name} (${item.price})`).join("\n")}\n\nTotal: KES ${total.toLocaleString()}`;
+    checkoutBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  }
+
+  // Remove item from cart
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveCart();
+    updateCart();
+  }
+
+  // Load cart on page load
+  updateCart();
+
+  // Scroll to cart when clicking floating cart button
+  document.getElementById("cart-icon").addEventListener("click", () => {
+    document.getElementById("cart").scrollIntoView({ behavior: "smooth" });
+  });
 </script>
+
 
 <!-- Contact -->
 <section id="contact" class="py-16 bg-gray-100 text-center px-4">
