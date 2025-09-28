@@ -317,7 +317,111 @@
 <!-- Alpine.js for dropdowns -->
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
+<!-- Sales Section -->
+<section id="sales" class="py-16 bg-gray-50 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Title -->
+    <h2 class="text-3xl font-bold text-brand mb-8 text-center">Shop Our Products</h2>
+
+    <!-- Category Tabs -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      <button class="category-tab active bg-brand text-white px-5 py-2 rounded-full shadow hover:bg-brand-dark transition" data-category="all">All</button>
+      <button class="category-tab bg-white text-gray-700 border px-5 py-2 rounded-full shadow hover:bg-gray-200 transition" data-category="batteries">Batteries</button>
+      <button class="category-tab bg-white text-gray-700 border px-5 py-2 rounded-full shadow hover:bg-gray-200 transition" data-category="inverters">Inverters</button>
+      <button class="category-tab bg-white text-gray-700 border px-5 py-2 rounded-full shadow hover:bg-gray-200 transition" data-category="panels">Solar Panels</button>
+      <button class="category-tab bg-white text-gray-700 border px-5 py-2 rounded-full shadow hover:bg-gray-200 transition" data-category="fittings">Fittings</button>
+      <button class="category-tab bg-white text-gray-700 border px-5 py-2 rounded-full shadow hover:bg-gray-200 transition" data-category="cables">Cables</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="product-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      
+      <!-- Product 1 -->
+      <div class="product-card product batteries bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <div class="relative">
+          <img src="https://i.postimg.cc/pXtyJH8L/byd-solar-battery.jpg" alt="BYD Battery" class="w-full h-48 object-cover">
+          <span class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">-9%</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-800 product-name">BYD Battery</h3>
+          <p class="text-sm text-gray-500 mb-2">BYD LV5.0 battery box 5kwh</p>
+          <p class="text-gray-400 line-through text-sm">KES 135,000</p>
+          <p class="text-green-600 font-bold text-lg product-price">122500</p>
+          <div class="flex gap-2 mt-3">
+            <a href="#" target="_blank" class="buy-btn flex-1 bg-brand text-white py-2 rounded hover:bg-brand-dark transition text-center">Buy Now</a>
+            <button 
+              class="add-to-cart flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+              data-name="BYD Battery"
+              data-price="122500"
+              data-image="https://i.postimg.cc/pXtyJH8L/byd-solar-battery.jpg">
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 (Placeholder) -->
+      <div class="product-card product inverters bg-white rounded-lg shadow overflow-hidden">
+        <div class="relative">
+          <img src="https://via.placeholder.com/400x200?text=Coming+Soon" alt="Coming Soon" class="w-full h-48 object-cover">
+          <span class="absolute top-2 left-2 bg-gray-400 text-white text-xs font-bold px-2 py-1 rounded">Coming</span>
+        </div>
+        <div class="p-4">
+          <h3 class="text-lg font-semibold text-gray-800 product-name">Coming Soon</h3>
+          <p class="text-sm text-gray-500 mb-2">Stay tuned for updates</p>
+          <p class="text-gray-400 line-through text-sm">KES —</p>
+          <p class="text-green-600 font-bold text-lg product-price">—</p>
+          <div class="flex gap-2 mt-3">
+            <a href="#" class="flex-1 bg-gray-300 text-white py-2 rounded cursor-not-allowed text-center">N/A</a>
+            <button disabled class="flex-1 bg-gray-300 text-white py-2 rounded cursor-not-allowed">N/A</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Floating Cart Button -->
+<div id="cart-icon" class="fixed bottom-6 right-6 bg-brand text-white p-4 rounded-full shadow-lg cursor-pointer flex items-center justify-center hover:bg-brand-dark transition relative">
+  🛒
+  <!-- Cart Count Badge -->
+  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full">0</span>
+</div>
+
+<!-- Cart Popup -->
+<div id="cart-popup" class="hidden fixed bottom-20 right-6 bg-white shadow-xl rounded-lg w-80 p-4 z-50">
+  <h3 class="text-lg font-bold mb-3">Shopping Cart</h3>
+  <div id="cart-items" class="space-y-2 max-h-60 overflow-y-auto"></div>
+  <div class="mt-4 flex justify-between font-bold">
+    <span>Total:</span>
+    <span>KES <span id="cart-total">0</span></span>
+  </div>
+  <button class="w-full mt-4 bg-green-600 text-white py-2 rounded hover:bg-green-700 transition">Checkout</button>
+</div>
+
 <script>
+  // Category filter logic
+  const tabs = document.querySelectorAll(".category-tab");
+  const products = document.querySelectorAll(".product-card");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("bg-brand", "text-white", "active"));
+      tab.classList.add("bg-brand", "text-white", "active");
+
+      const category = tab.dataset.category;
+      products.forEach(p => {
+        if (category === "all" || p.classList.contains(category)) {
+          p.style.display = "block";
+        } else {
+          p.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Cart logic with localStorage
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   function updateCart() {
@@ -335,16 +439,15 @@
         <div class="flex items-center justify-between bg-gray-50 p-2 rounded">
           <img src="${item.image}" class="h-10 w-10 object-cover rounded">
           <span class="text-sm">${item.name}</span>
-          <span class="text-sm font-bold">$${item.price}</span>
+          <span class="text-sm font-bold">KES ${item.price}</span>
           <button onclick="removeFromCart(${index})" class="text-red-500 text-xs">✖</button>
         </div>
       `;
     });
 
     cartCount.textContent = cart.length;
-    cartTotal.textContent = total.toFixed(2);
+    cartTotal.textContent = total.toLocaleString();
 
-    // Save to localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
@@ -365,12 +468,11 @@
     });
   });
 
-  // Toggle cart popup
   document.getElementById('cart-icon').addEventListener('click', () => {
     document.getElementById('cart-popup').classList.toggle('hidden');
   });
 
-  // Initialize cart on page load
+  // Init cart
   updateCart();
 </script>
 
