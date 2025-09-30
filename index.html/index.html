@@ -20,28 +20,29 @@
     <div>+254 105 837658 | +254 714 034289</div>
     <div><a href="mailto:ej.solution26@gmail.com" class="hover:underline">ej.solution26@gmail.com</a></div>
   </div>
+
 <!-- Navbar -->
 <header class="sticky top-0 z-50 bg-brand-dark text-white shadow">
   <nav class="container mx-auto max-w-7xl px-4 py-4 flex justify-between items-center" aria-label="Main Navigation">
     
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <img 
-        src="https://i.postimg.cc/RhBF6Cdj/company-logo.jpg" 
-        alt="EJ Energy Solutions Logo" 
-        class="w-12 h-12 object-contain shadow-md"
-      >
-      <span class="text-xl font-bold">
-        EJ Energy Solutions
-      </span>
-    </div>
+<!-- Logo -->
+<div class="flex items-center gap-3">
+  <img 
+    src="https://i.postimg.cc/RhBF6Cdj/company-logo.jpg" 
+    alt="EJ Energy Solutions Logo" 
+    class="w-12 h-12 object-contain shadow-md"
+  >
+  <span class="text-xl font-bold">
+    EJ Energy Solutions
+  </span>
+</div>
     
     <!-- Desktop Menu -->
     <ul class="hidden md:flex space-x-5">
       <li><a href="#about" class="nav-link hover:text-brand">About us</a></li>
       <li><a href="#profile" class="nav-link hover:text-brand">Company Profile</a></li>
       <li><a href="#sales" class="nav-link hover:text-brand">Products For Sale</a></li>
-      <li><button id="projects-btn" class="hover:text-brand">Projects</button></li>
+      <li><a href="#projects" class="nav-link hover:text-brand">projects</a></li>
       <li><a href="#contact" class="nav-link hover:text-brand">Contact Us</a></li>
     </ul>
     
@@ -52,6 +53,7 @@
               d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
     </button>
+    
   </nav>
   
   <!-- Mobile Dropdown -->
@@ -59,68 +61,17 @@
     <a href="#about" class="nav-link block py-2 hover:text-brand">About Us</a>
     <a href="#profile" class="nav-link block py-2 hover:text-brand">Company Profile</a>
     <a href="#sales" class="nav-link block py-2 hover:text-brand">Products For Sale</a>
-    <button id="projects-btn-mobile" class="block py-2 hover:text-brand w-full text-left">Projects</button>
+    <a href="#projects" class="nav-link block py-2 hover:text-brand">Projects</a>
     <a href="#contact" class="nav-link block py-2 hover:text-brand">Contact Us</a>
   </div>
 </header>
 
-<!-- PROJECTS OVERLAY -->
-<section id="projects-overlay" class="fixed inset-0 bg-white text-gray-900 z-50 hidden overflow-y-auto">
-  <div class="container mx-auto px-6 py-10">
-    <!-- Close button -->
-    <button id="close-projects" class="absolute top-4 right-6 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-      Close ✕
-    </button>
-    
-    <!-- Title -->
-    <h2 class="text-3xl font-bold mb-8">Our Projects</h2>
-
-    <!-- Location Filter Buttons -->
-    <div class="flex flex-wrap gap-4 mb-10">
-      <button class="location-btn bg-brand-dark text-white px-5 py-2 rounded hover:bg-brand">Nairobi</button>
-      <button class="location-btn bg-brand-dark text-white px-5 py-2 rounded hover:bg-brand">Mombasa</button>
-      <button class="location-btn bg-brand-dark text-white px-5 py-2 rounded hover:bg-brand">Kisumu</button>
-      <button class="location-btn bg-brand-dark text-white px-5 py-2 rounded hover:bg-brand">Eldoret</button>
-    </div>
-
-    <!-- Default message -->
-    <div id="default-message" class="text-center text-gray-600">
-      <p>Select a location to view completed projects.</p>
-    </div>
-
-    <!-- Projects by location -->
-    <div id="nairobi-projects" class="hidden space-y-8">
-      <h3 class="text-2xl font-semibold text-brand-dark">Nairobi Installations</h3>
-      <p class="text-gray-600">Details of solar and CCTV projects in Nairobi.</p>
-      <img src="https://via.placeholder.com/600x300" alt="Nairobi Project" class="rounded-xl shadow-md mt-4">
-    </div>
-
-    <div id="mombasa-projects" class="hidden space-y-8">
-      <h3 class="text-2xl font-semibold text-brand-dark">Mombasa Installations</h3>
-      <p class="text-gray-600">Details of electrical and solar installations in Mombasa.</p>
-      <img src="https://via.placeholder.com/600x300" alt="Mombasa Project" class="rounded-xl shadow-md mt-4">
-    </div>
-
-    <div id="kisumu-projects" class="hidden space-y-8">
-      <h3 class="text-2xl font-semibold text-brand-dark">Kisumu Installations</h3>
-      <p class="text-gray-600">Details of recent installations in Kisumu.</p>
-      <img src="https://via.placeholder.com/600x300" alt="Kisumu Project" class="rounded-xl shadow-md mt-4">
-    </div>
-
-    <div id="eldoret-projects" class="hidden space-y-8">
-      <h3 class="text-2xl font-semibold text-brand-dark">Eldoret Installations</h3>
-      <p class="text-gray-600">Details of CCTV and electrical installations in Eldoret.</p>
-      <img src="https://via.placeholder.com/600x300" alt="Eldoret Project" class="rounded-xl shadow-md mt-4">
-    </div>
-  </div>
-</section>
-
 <script>
-  // Navbar mobile toggle
   const btn = document.getElementById("menu-btn");
   const menu = document.getElementById("menu");
   const links = document.querySelectorAll(".nav-link");
 
+  // Toggle mobile menu
   btn.addEventListener("click", () => {
     const expanded = btn.getAttribute("aria-expanded") === "true";
     btn.setAttribute("aria-expanded", !expanded);
@@ -132,67 +83,19 @@
     }
   });
 
-  // Projects overlay controls
-  const projectsBtn = document.getElementById("projects-btn");
-  const projectsBtnMobile = document.getElementById("projects-btn-mobile");
-  const projectsOverlay = document.getElementById("projects-overlay");
-  const closeProjects = document.getElementById("close-projects");
-
-  function openProjects() {
-    projectsOverlay.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeProjectsOverlay() {
-    projectsOverlay.classList.add("hidden");
-    document.body.style.overflow = "auto";
-    resetProjects();
-  }
-
-  projectsBtn.addEventListener("click", openProjects);
-  projectsBtnMobile.addEventListener("click", openProjects);
-  closeProjects.addEventListener("click", closeProjectsOverlay);
-
-  // Location switching
-  const locationBtns = document.querySelectorAll(".location-btn");
-  const sections = {
-    "Nairobi": document.getElementById("nairobi-projects"),
-    "Mombasa": document.getElementById("mombasa-projects"),
-    "Kisumu": document.getElementById("kisumu-projects"),
-    "Eldoret": document.getElementById("eldoret-projects")
-  };
-  const defaultMessage = document.getElementById("default-message");
-
-  function resetProjects() {
-    Object.values(sections).forEach(sec => sec.classList.add("hidden"));
-    defaultMessage.classList.remove("hidden");
-    locationBtns.forEach(b => b.classList.remove("bg-brand", "text-white"));
-    locationBtns.forEach(b => b.classList.add("bg-brand-dark"));
-  }
-
-  locationBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      // Hide all sections
-      Object.values(sections).forEach(sec => sec.classList.add("hidden"));
-      defaultMessage.classList.add("hidden");
-
-      // Remove active state from all buttons
-      locationBtns.forEach(b => b.classList.remove("bg-brand", "text-white"));
-      locationBtns.forEach(b => b.classList.add("bg-brand-dark"));
-
-      // Add active state to clicked button
-      btn.classList.remove("bg-brand-dark");
-      btn.classList.add("bg-brand", "text-white");
-
-      // Show selected location
-      const location = btn.textContent.trim();
-      if (sections[location]) {
-        sections[location].classList.remove("hidden");
+  // Highlight active link while scrolling
+  window.addEventListener("scroll", () => {
+    let fromTop = window.scrollY + 100;
+    links.forEach(link => {
+      let section = document.querySelector(link.getAttribute("href"));
+      if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+        link.classList.add("text-brand");
+      } else {
+        link.classList.remove("text-brand");
       }
     });
   });
 </script>
-
 
 <!-- Hero -->
 <section id="hero" 
@@ -874,7 +777,51 @@ updateCart();
    </div>
    </section>
 
+<section id="projects" class="py-16 bg-white container mx-auto px-4">
+  <h2 class="text-3xl font-bold text-center text-brand mb-10">Projects</h2>
+    <div class="grid md:grid-cols-4 gap-4">
+      <img src="https://i.postimg.cc/ZYdHpbZM/EJ-Energy.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 1">
+      <img src="https://i.postimg.cc/SstPsD6Y/EJ-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 2">
+      <img src="https://i.postimg.cc/B6hfQvsM/Whats-App-Image-2025-06-17-at-13-01-31-3.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 3">
+      <img src="https://i.postimg.cc/44P6zmqw/Ej-Energy-Solutions.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 4">
+      <img src="https://i.postimg.cc/1txmjTrm/heat-pump.jpg" class="w-full h-52 object-cover rounded cursor-pointer lightbox-img" alt="Solar 5">
+    </div>
+  </div>
 
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+  <span id="closeLightbox" class="absolute top-5 right-8 text-white text-3xl cursor-pointer">&times;</span>
+  <img id="lightboxImg" src="" class="max-w-4xl max-h-[90vh] rounded shadow-lg">
+</div>
+
+<script>
+  // Get elements
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("closeLightbox");
+  const images = document.querySelectorAll(".lightbox-img");
+
+  // Open lightbox
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.classList.remove("hidden");
+      lightboxImg.src = img.src;
+    });
+  });
+
+  // Close lightbox
+  closeBtn.addEventListener("click", () => {
+    lightbox.classList.add("hidden");
+  });
+
+  // Close when clicking outside image
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add("hidden");
+    }
+  });
+</script>
+  
   </div>
 </section>
 <!-- Divider -->
