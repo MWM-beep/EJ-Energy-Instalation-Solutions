@@ -376,33 +376,43 @@
 
   <div class="max-w-6xl mx-auto" x-data="{ openSection: '' }">
 
-    <!-- Category Buttons -->
-    <div class="flex flex-wrap justify-center gap-4 mb-10">
-      <button 
-        class="px-6 py-2 rounded font-bold border transition-colors"
-        :class="openSection === 'batteries' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
-        @click="openSection = 'batteries'">Batteries</button>
+<!-- Category Buttons -->
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+  <button 
+    class="px-6 py-2 rounded font-bold border transition-colors"
+    :class="openSection === 'batteries' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+    @click="openSection = openSection === 'batteries' ? null : 'batteries'">
+    Batteries
+  </button>
 
-      <button 
-        class="px-6 py-2 rounded font-bold border transition-colors"
-        :class="openSection === 'panels' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
-        @click="openSection = 'panels'">Solar Panels</button>
+  <button 
+    class="px-6 py-2 rounded font-bold border transition-colors"
+    :class="openSection === 'panels' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+    @click="openSection = openSection === 'panels' ? null : 'panels'">
+    Solar Panels
+  </button>
 
-      <button 
-        class="px-6 py-2 rounded font-bold border transition-colors"
-        :class="openSection === 'inverters' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
-        @click="openSection = 'inverters'">Inverters</button>
+  <button 
+    class="px-6 py-2 rounded font-bold border transition-colors"
+    :class="openSection === 'inverters' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+    @click="openSection = openSection === 'inverters' ? null : 'inverters'">
+    Inverters
+  </button>
 
-      <button 
-        class="px-6 py-2 rounded font-bold border transition-colors"
-        :class="openSection === 'fittings' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
-        @click="openSection = 'fittings'">Fittings</button>
+  <button 
+    class="px-6 py-2 rounded font-bold border transition-colors"
+    :class="openSection === 'fittings' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+    @click="openSection = openSection === 'fittings' ? null : 'fittings'">
+    Fittings
+  </button>
 
-    <button 
-        class="px-6 py-2 rounded font-bold border transition-colors"
-        :class="openSection === 'cables' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
-        @click="openSection = 'cables'">Cables</button>
-    </div>
+  <button 
+    class="px-6 py-2 rounded font-bold border transition-colors"
+    :class="openSection === 'cables' ? 'bg-brand text-white' : 'bg-gray-100 text-gray-800'"
+    @click="openSection = openSection === 'cables' ? null : 'cables'">
+    Cables
+  </button>
+</div>
 
     <!-- Batteries -->
     <div x-show="openSection === 'batteries'" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-500">
