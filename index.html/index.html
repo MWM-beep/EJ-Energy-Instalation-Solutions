@@ -798,10 +798,32 @@ updateCart();
 <!-- Centered Projects Button -->
 <div class="flex justify-center mt-12">
   <button id="openProjects" 
-    class="px-12 py-4 bg-red-600 text-white font-semibold text-lg rounded-full shadow-md transition duration-300 transform hover:scale-105 hover:bg-red-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-red-300">
+    class="px-12 py-4 bg-gradient-to-r from-red-500 via-red-600 to-red-700 
+           text-white font-semibold text-lg rounded-full shadow-md 
+           transition duration-300 transform hover:scale-105 hover:shadow-2xl 
+           focus:outline-none focus:ring-4 focus:ring-red-300 animate-glow">
     View Our Projects
   </button>
 </div>
+
+<!-- Glow Animation -->
+<style>
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.6), 
+                  0 0 30px rgba(239, 68, 68, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.8), 
+                  0 0 50px rgba(239, 68, 68, 0.6);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s infinite ease-in-out;
+  }
+</style>
+
 
 
   <!-- Projects Overlay -->
